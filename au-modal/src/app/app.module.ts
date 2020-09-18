@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {AuInputModule} from 'au-input';
-import {AuTabPanelModule} from "au-tab-panel";
-import {AuModalModule} from "./au-modal/au-modal.module";
-import {HttpClientModule} from "@angular/common/http";
+import {AuTabPanelModule} from 'au-tab-panel';
+import {AuModalModule} from './au-modal/au-modal.module';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({

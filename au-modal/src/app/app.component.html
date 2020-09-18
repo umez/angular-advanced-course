@@ -3,8 +3,7 @@
     <li class="logo-small-container">
       <a class="v-center-block-parent">
         <img class="v-center-block logo-small angular-university-logo"
-             src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
-             data-pin-nopin="true">
+          src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png" data-pin-nopin="true">
 
       </a>
     </li>
@@ -16,33 +15,57 @@
 </header>
 
 <body>
-<div class="container">
+  <div class="container">
 
-  <h1>Modal Examples</h1>
+    <h1>Modal Examples</h1>
+
+    <ng-template #authModalBody let-title="title" let-loginTabActive="loginTabActive">
+      <h5>{{title}}</h5>
+      <au-tab-panel>
+
+        <au-tab title="Login" [selected]="loginTabActive">
+          <form>
+            <div class="form-field">
+              <label>Email:</label><input name="email">
+            </div>
+            <div class="form-field">
+              <label>Password:</label><input>
+            </div>
+          </form>
+        </au-tab>
+
+        <au-tab title="Sign Up" [selected]="!loginTabActive">
+          <form>
+            <div class="form-field">
+              <label>Email:</label><input>
+            </div>
+            <div class="form-field">
+              <label>Password:</label><input>
+            </div>
+            <div class="form-field">
+              <label>Confirm Password:</label><input>
+            </div>
+          </form>
+        </au-tab>
+      </au-tab-panel>
+    </ng-template>
+
+    <app-au-modal #modal [hideOnClickOutside]="true" [hideOnEsc]="true" class="auth-modal"
+      *auModalOpenOnClick="[loginButton, signUpButton]" [modalBody]="authModalBody"
+      [context]="{title: 'Login or signup', loginTabActive: loginActive}">
+      <i class="fa fa-times" (click)=modal.closeModal()></i>
+    </app-au-modal>
 
 
 
+    <div class="modal-buttons">
 
+      <button #loginButton (click)="setLoginActive(true)">Login</button>
 
+      <button #signUpButton (click)="setLoginActive(false)">Sign Up</button>
 
-
-
-  <div class="modal-buttons">
-
-    <button #loginButton>Login</button>
-
-    <button #signUpButton>Sign Up</button>
+    </div>
 
   </div>
 
-</div>
-
 </body>
-
-
-
-
-
-
-
-
